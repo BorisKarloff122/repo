@@ -8,18 +8,19 @@ import {INote} from "../../models/note";
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.sass']
 })
-export class FormComponent implements OnInit{
+export class FormComponent implements OnInit {
   public editMode: boolean = false;
 
   constructor(private dialog: MatDialogRef<FormComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: INote){}
+              @Inject(MAT_DIALOG_DATA) public data: INote) {
+  }
 
   ngOnInit() {
     this.checkIfEdit();
   }
 
-  public checkIfEdit(): void{
-      this.editMode = this.data.note !== '';
+  public checkIfEdit(): void {
+    this.editMode = this.data.note !== '';
   }
 
   public notesForm = new FormGroup({
@@ -28,13 +29,13 @@ export class FormComponent implements OnInit{
     category: new FormControl(this.data.category, Validators.required)
   });
 
-  public formSubmit(): void{
-    if(this.notesForm.valid){
+  public formSubmit(): void {
+    if (this.notesForm.valid) {
       this.dialog.close({data: this.notesForm.value});
     }
   }
 
-  public getFormControl(name: string): AbstractControl{
+  public getFormControl(name: string): AbstractControl {
     return this.notesForm.get(name) as AbstractControl
   }
 

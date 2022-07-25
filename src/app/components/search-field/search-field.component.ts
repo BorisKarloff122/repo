@@ -17,8 +17,10 @@ export class SearchFieldComponent {
 
   public val: string = '';
 
-  public onChange: any = () => {};
-  public onTouch: any = () => {};
+  public onChange: any = () => {
+  };
+  public onTouch: any = () => {
+  };
 
   set value(val: string) {
     this.val = val;

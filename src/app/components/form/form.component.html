@@ -2,44 +2,54 @@
   <mat-card class="notes-form">
     <h3 matCardTitle>{{ this.editMode ? 'Edit note' : 'Add a note' }}</h3>
     <form (submit)="formSubmit()" [formGroup]="notesForm">
+
       <div class="form-group">
         <mat-form-field>
           <mat-label>Note</mat-label>
-          <input matInput type="text" formControlName="note" />
+          <input matInput type="text" formControlName="note"/>
           <mat-error *ngIf="!this.getFormControl('note').valid">
             <div class="error-block"
-                 *ngIf="this.getFormControl('note').value.length === 0">This field Cannot be empty</div>
+                 *ngIf="this.getFormControl('note').value.length === 0">This field Cannot be empty
+            </div>
             <div class="error-block" *ngIf="this.getFormControl('note').value.length > 0 &&
              this.getFormControl('note').value.length < 4">
-              This field must be at least 4 chars long, characters entered: {{this.getFormControl('note').value.length}}</div>
+              This field must be at least 4 chars long, characters entered:
+              {{this.getFormControl('note').value.length}}
+            </div>
           </mat-error>
         </mat-form-field>
       </div>
+
       <div class="form-group">
         <mat-form-field>
           <mat-label>Due date</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="dueDate" />
+          <input matInput [matDatepicker]="picker" formControlName="dueDate"/>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
           <mat-error *ngIf="!this.getFormControl('dueDate').valid">
             <div class="error-block"
-                 *ngIf="this.getFormControl('dueDate').value.length === 0">This field cannot be empty</div>
+                 *ngIf="this.getFormControl('dueDate').value.length === 0">This field cannot be empty
+            </div>
           </mat-error>
         </mat-form-field>
       </div>
-      <div class="form-group" >
+
+      <div class="form-group">
         <mat-form-field>
           <mat-label>Category</mat-label>
-        <input matInput formControlName="category">
+          <input matInput formControlName="category">
           <mat-error *ngIf="!this.getFormControl('category').valid">
             <div class="error-block"
-                 *ngIf="this.getFormControl('category').value.length === 0">This field cannot be empty</div>
+                 *ngIf="this.getFormControl('category').value.length === 0">This field cannot be empty
+            </div>
           </mat-error>
         </mat-form-field>
       </div>
+
       <div class="button-group">
         <button mat-button color="primary">{{ this.editMode ? 'Update' : 'Add' }}</button>
       </div>
+
     </form>
   </mat-card>
 </mat-dialog-content>

@@ -1,4 +1,4 @@
-export interface INote{
+export interface INote {
   id?: string,
   note: string,
   category: string,
