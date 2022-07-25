@@ -61,8 +61,7 @@ export class ListComponent {
   constructor(
     private dialog: MatDialog,
     private dataService: GetDataService
-  ) {
-  }
+  ) {}
 
   public get searchFieldSource(): AbstractControl | null {
     return this.form.get('search')
