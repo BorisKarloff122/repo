@@ -9,6 +9,7 @@ import { ListComponent } from './components/list/list.component';
 import {HttpClientModule} from "@angular/common/http";
 import {HeaderComponent} from "./shared/components/header/header.component";
 import { SearchFieldComponent } from './components/search-field/search-field.component';
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SearchFieldComponent } from './components/search-field/search-field.com
     AppRoutingModule,
     SharedModule,
     HttpClientModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

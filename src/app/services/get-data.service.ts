@@ -12,12 +12,12 @@ export class GetDataService {
 
   constructor(private http: HttpClient) { }
 
-  public getAllNotes(): Observable<INote[]>{
-    return this.http.get<INote[]>('http://localhost:3000/api/notes');
+  public getAllNotes(search: string, category: string): Observable<INote[]>{
+    return this.http.get<INote[]>(`http://localhost:3000/api/notes?search=${search}&category=${category}`);
   }
 
   public updateNote(id: string | undefined, reqBody: INote): Observable<INote>{
-    return this.http.put<INote>(`${'http://localhost:3000/api/notes/' + id}`, reqBody)
+    return this.http.put<INote>(`'http://localhost:3000/api/notes/${id}`, reqBody)
   }
 
   public deleteNote(id: string | undefined): Observable<INote> {

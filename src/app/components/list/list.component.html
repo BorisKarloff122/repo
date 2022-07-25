@@ -1,13 +1,15 @@
-<div class="search-block"><app-search-field [formControl]="searchField"></app-search-field></div>
+<form [formGroup]="form">
+<div class="search-block"><app-search-field formControlName="search"></app-search-field></div>
 
-<div class="cat-filter-block" >
+<div class="cat-filter-block" *ngIf="(categories$ | async) as categories">
   <div class="filter-label">Categories</div>
-  <div class="filter" *ngFor="let category of categories | async">
-    <div class="filter-block" (click)="filterCategories(category)">{{ category }}</div>
-  </div>
+  <mat-select formControlName="category" class="filter" >
+    <mat-option *ngFor="let category of categories" class="filter-block">{{ category }}</mat-option>
+  </mat-select>
 </div>
+</form>
 
-<ng-container *ngIf="notes && notes.length > 0; else noNotes">
+<ng-container *ngIf="(notes$ | async) as notes; else noNotes">
   <mat-list>
     <mat-list-item class="list-item" *ngFor="let n of notes; let i = index">
       <div class="tools">
