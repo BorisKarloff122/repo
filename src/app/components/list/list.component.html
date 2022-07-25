@@ -1,0 +1,31 @@
+<div class="search-block"><app-search-field [formControl]="searchField"></app-search-field></div>
+
+<div class="cat-filter-block" >
+  <div class="filter-label">Categories</div>
+  <div class="filter" *ngFor="let category of categories | async">
+    <div class="filter-block" (click)="filterCategories(category)">{{ category }}</div>
+  </div>
+</div>
+
+<ng-container *ngIf="notes && notes.length > 0; else noNotes">
+  <mat-list>
+    <mat-list-item class="list-item" *ngFor="let n of notes; let i = index">
+      <div class="tools">
+        <mat-icon (click)="editNote(n.id, n)">edit</mat-icon>
+        <mat-icon (click)="deleteNote(n.id)">delete</mat-icon>
+      </div>
+      <span class="noteText">{{ n.note }}</span>
+      <span *ngIf="n.dueDate">(Due: {{ n.dueDate | date }})</span>
+    </mat-list-item>
+  </mat-list>
+</ng-container>
+
+<ng-template #noNotes>
+  <p class="no-notes">
+    <i>No notes</i>
+  </p>
+</ng-template>
+
+<div class="add-block">
+  <button mat-button (click)="newNote()">Add Note</button>
+</div>

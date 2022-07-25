@@ -1,0 +1,4 @@
+<mat-form-field class="input-field">
+  <mat-label>Search notes</mat-label>
+  <input matInput type="text" [value]="val" (input)="value = $any($event.target).value">
+</mat-form-field>
